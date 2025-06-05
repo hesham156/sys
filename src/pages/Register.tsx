@@ -30,7 +30,7 @@ const Register: React.FC = () => {
       setError('');
       setLoading(true);
       await register(email, password, name, role);
-      navigate('/dashboard');
+      navigate('/');
     } catch (err: any) {
       if (err.code === 'auth/email-already-in-use') {
         setError('This email is already in use. Please try logging in or use a different email.');
