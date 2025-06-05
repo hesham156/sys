@@ -32,7 +32,11 @@ const Register: React.FC = () => {
       await register(email, password, name, role);
       navigate('/dashboard');
     } catch (err: any) {
-      setError('Failed to create an account');
+      if (err.code === 'auth/email-already-in-use') {
+        setError('This email is already in use. Please try logging in or use a different email.');
+      } else {
+        setError('Failed to create an account');
+      }
       console.error(err);
     } finally {
       setLoading(false);
